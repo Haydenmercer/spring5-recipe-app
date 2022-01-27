@@ -60,8 +60,8 @@ public class IngredientServiceImpl implements IngredientService {
 
     @Override
     @Transactional
-    public IngredientCommand saveIngredientCommand(IngredientCommand command) {
-        Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId());
+    public IngredientCommand saveIngredientCommand(IngredientCommand command) { //ingredientCommand is a detached entity (i.e. does not hold a RecipeCommand object
+        Optional<Recipe> recipeOptional = recipeRepository.findById(command.getRecipeId()); //get the recipe object using the ID on the IngredientCommand
 
         if(!recipeOptional.isPresent()){
 
