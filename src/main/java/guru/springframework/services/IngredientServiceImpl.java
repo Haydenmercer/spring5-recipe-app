@@ -133,7 +133,7 @@ public class IngredientServiceImpl implements IngredientService {
             if(ingredientOptional.isPresent()){
                 log.debug("found Ingredient");
                 Ingredient ingredientToDelete = ingredientOptional.get();
-                ingredientToDelete.setRecipe(null);
+                ingredientToDelete.setRecipe(null); //@OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe", orphanRemoval = true)
                 recipe.getIngredients().remove(ingredientOptional.get());
                 recipeRepository.save(recipe);
             }
